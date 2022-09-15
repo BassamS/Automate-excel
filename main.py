@@ -14,6 +14,9 @@ wb.save('Grades.xlsx')
 
 # print(wb.sheetnames)
 
+# Merging cells
+ws.merge_cells('A1:D1')
+
 
 for row in range(1, 11):
     for col in range(1, 5):
