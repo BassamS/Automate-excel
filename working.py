@@ -42,5 +42,15 @@ ws.title = "Grades"
 headings = ['Name'] + list(data['Joe'].keys())
 ws.append(headings)
 
+for person in data:
+    grades = list(data[person].values())
+    ws.append([person] + grades)
+
+for col in range(2, len(data['Joe']) + 2):
+    char = get_column_letter(col)
+    ws[char + "7"] = f"=SUM({char + '2'}:{char + '6'})/{len(data)}"
+
+for col in range(1, 6):
+    ws[get_column_letter(col) + '1'].font = Font(bold=True, color="0099CCFF")
 
 wb.save("NewGrades.xlsx")
